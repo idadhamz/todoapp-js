@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="shortcut icon" href="dis.png">
+        <title>Tugas 2 | To Do Apps</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="index.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #4863A0;">
+            <div class="container">
+                <a class="navbar-brand mb-0 h1" href="#">To-Do App</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="javascript::void(0)">List To-Do</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div id="todo">
+            <div class="container">
+                <form id="new-todo" style="margin-top: 25px;">
+                    <div class="row">
+                        <div class="col-md-6">
+                           <input type="text" class="form-control" name="todo" placeholder="Masukkan To-Do anda.." autocomplete="off" required>
+                        </div>
+                        <div class="col-md-4">
+                            <select name="pilihan_todo" class="custom-select">
+                                <option selected>Pilih Jenis To-Do</option>
+                                <option value="1">Belum Dilakukan</option>
+                                <option value="2">Sedang</option>
+                                <option value="3">Sudah Dilakukan</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="submit" class="btn" style="background-color:#4863A0;color:white; ">Save To-Do</button>
+                        </div>
+                     </div>
+                </form>
+                <hr />
+                
+                <!-- Nav tabs -->
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#all">Semua Todo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#belum">Belum</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#sedang">Sedang</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#sudah">Sudah</a>
+                    </li>
+                </ul>
+                <!-- <hr /> -->
+                
+                <!-- Tab panes -->
+                <div class="tab-content" style="margin-top:15px;">
+                    <div class="form-row">
+                        <div class="form-group col-md-5">
+                            <div id="search">
+                                <input type="text" class="form-control" id="cari_todo" placeholder="Cari todo...">
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <div class="form-check" style="margin-top: 5px;">
+                                <input class="form-check-input" type="checkbox" id="hide-sudah">
+                                <label class="form-check-label" for="gridCheck">
+                                    Hilangkan Todo yang sudah selesai
+                                </label>
+                            </div>
+                        </div>
+                        <!-- <div class="form-group col-md-3">
+                            <div id="info" style="margin: 2px 0px 0px 10px;"></div>
+                        </div> -->
+                    </div>
+                    <hr />
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <div id="info" style="margin: 0px 0px 10px 5px;"></div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane active" id="all">
+                        <table id="table_all" class="table table-striped table-bordered" style="border-radius: 5px;">
+                            <thead>
+                                <tr>
+                                    <td><b>Daftar Semua Todo</b></td>
+                                    <!-- <td>Aksi</td> -->
+                                </tr>
+                            </thead>
+                            <tbody id="tbody_all">
+                                <!-- <tr> -->
+                                    <!-- <td>Mandi</td> -->
+                                <!-- </tr> -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="tab-pane fade" id="belum">
+                        <table id="table_belum" class="table table-striped table-bordered" style="border-radius: 5px;">
+                            <thead>
+                                <tr>
+                                    <td><b>Daftar Todo</b></td>
+                                    <!-- <td>Aksi</td> -->
+                                </tr>
+                            </thead>
+                            <tbody id="tbody_belum">
+                                <!-- <tr> -->
+                                    <!-- <td>Mandi</td> -->
+                                <!-- </tr> -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane fade" id="sedang">
+                        <table id="table_sedang" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <td><b>Daftar Todo</b></td>
+                                    <!-- <td>Aksi</td> -->
+                                </tr>
+                            </thead>
+                            <tbody id="tbody_sedang">
+                                <tr>
+                                    <!-- <td>Coding</td> -->
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane fade" id="sudah">
+                        <table id="table_sudah" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <td><b>Daftar Todo</b></td>
+                                    <!-- <td>Aksi</td> -->
+                                </tr>
+                            </thead>
+                            <tbody id="tbody_sudah">
+                                <tr>
+                                    <!-- <td>Makan</td> -->
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="app-function.js"></script>
+        <script src="app.js"></script>
+    </body>
+</html>
